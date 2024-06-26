@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="shopping-cart row mb-5">
+    <div class="title">
+        Shopping Cart
+    </div>
+    {% for item in c %}
+    <div class="item">
+        <div class="image">
+            {% if item.product %}
+                <img src="{{ item.product.image.url }}" height="100px" width="100px">
+            {% elif item.deal %}
+                <img src="{{ item.deal.image.url }}" height="100px" width="100px">
+            {% endif %}
+        </div>
+
+        <div class="description">
+            {% if item.product %}
+                <h3>{{ item.product.name }}</h3><br>
+                Category: {{ item.product.category.name }}
+            {% elif item.deal %}
+                <h3>{{ item.deal.title }}</h3><br>
+                Category: {{ item.deal.title }}
+            {% endif %}
+        </div>
+
+        <div class="quantity">
+            {% if item.product %}
+                {% if item.product.stock > 0 %}
+        <a href="{% url 'pcart' item.product.name %}"><i class="fas fa-plus text-danger fs-4"></i></a>
+        <a href="{% url 'pdcart' item.product.name %}"><i class="fas fa-minus text-danger fs-4"></i> </a>
+        <a href="{% url 'prcart' item.product.name %}"><i class="fas fa-trash text-danger "></i> </a>
+      <input type="text" name="name" value="Quantity:{{item.quantity}}">
+      {% else %}
+        <a href="{% url 'pdcart' item.product.name %}"><i class="fas fa-minus text-danger fs-4"></i> </a>
+        <a href="{% url 'prcart' item.product.name %}"><i class="fas fa-trash text-danger "></i> </a>
+        <input type="text" name="name" value="Quantity:{{item.quantity}}">
+        {% endif %}
+            {% elif item.deal %}
+                {% if item.deal.stock > 0 %}
+        <a href="{% url 'dcart' item.deal.title %}?deal=true"><i class="fas fa-plus text-danger fs-4"></i></a>
+        <a href="{% url 'ddcart' item.deal.title %}?deal=true"><i class="fas fa-minus text-danger fs-4"></i> </a>
+        <a href="{% url 'drcart' item.deal.title %}?deal=true"><i class="fas fa-trash text-danger "></i> </a>
+      <input type="text" name="name" value="Quantity:{{item.quantity}}">
+      {% else %}
+        <a href="{% url 'ddcart' item.deal.title %}?deal=true"><i class="fas fa-minus text-danger fs-4"></i> </a>
+        <a href="{% url 'drcart' item.deal.title %}?deal=true"><i class="fas fa-trash text-danger "></i> </a>
+        <input type="text" name="name" value="Quantity:{{item.quantity}}">
+        {% endif %}
+
+            {% endif %}
+        </div>
+        <div class="total-price">{{ item.subtotal }}</div>
+    </div>
+    {% endfor %}
+</div>
+<center>
+    <div class="proceed">
+        <h2>Total:{{ total }}</h2>
+        <a href="{% url 'orderform' %}" class="btn">Place Order</a>
+        <a href="{% url 'category' %}" class="btn">Continue Shopping</a>
+    </div>
+</center>
+{% endblock %}

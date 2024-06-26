@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<center>
+    <h2 class="m-3">You have searched for {{ query }}</h2>
+
+{% if b %}
+<div class="row m-5 ">
+{% for i in b %}
+<div class="col-sm-4 mb-5">
+    <div class="card " style="width: 20rem; height:350px;">
+  <img src="{{i.image.url}}" class="card-img-top" height="250px" width="100%">
+  <div class="card-body">
+    <center><h2 class="card-title"><b>{{i.name}}</b></h2></center>
+      <center><h2><b>Price:</b>{{i.price}}</h2>
+       <a href="{% url 'detail' i.name %}" class="btn btn-primary">Details</a></center>
+  </div>
+</div>
+</div>
+{% endfor %}
+</div>
+{% else %}
+<div style="width:300px;height:50px;border:2px solid black;padding:5px;margin:5px;">
+    <h1 class="text-danger">Query Not Found</h1>
+    </div>
+{% endif %}
+
+</center>
+
+{% endblock %}

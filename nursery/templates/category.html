@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="category" id="category">
+
+<h1 class="heading"> Shop by category </h1>
+
+<div class="box-container">
+    {% for i in cat %}
+    <div class="box">
+        <img src="{{i.image.url}}" alt="">
+        <div class="content">
+            <h3>{{i.name}}</h3>
+            <a href="{% url 'product' i.name %}" class="btn">Shop now</a>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="category" id="category">
+
+<h1 class="heading"> {{i.category.name}}</h1>
+
+<div class="box-container">
+    {% for i in prod %}
+    <div class="box">
+        <img src="{{i.image.url}}" alt="">
+        <div class="content">
+            <h3>{{i.name}}</h3>
+            <h3>{{i.price}}</h3>
+            <a href="{% url 'detail' i.name %}" class="btn">Details</a>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+</section>
+
+
+
+
+{% endblock %}

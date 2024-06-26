@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<center>
+
+<div class="container">
+    <div class="row mt-5 mb-5">
+        <div class="col-sm-4 me-5">
+            <img src="{{b.image.url}}" height="400px" width="400px">
+        </div>
+        <div class="col-sm-6 ms-5 me-5">
+            <h2>{{b.name}}</h2>
+            <h2>{{b.desc}}</h2>
+            <h2>Price:{{b.price}}</h2>
+            <h2>Stock:{{b.stock}}</h2>
+
+
+
+
+                {% if b.stock == 0 %}
+                <h2>Out of Stock</h2>
+                {% else %}
+                <a href="{% url 'pcart' b.name %}" class="btn btn-primary mt-5">Add to cart</a>
+                {% endif %}
+        </div>
+    </div>
+</div>
+</center>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="contact" id="contact">
+
+<h1 class="heading">get in touch</h1>
+
+<div class="row">
+
+    <img src="{% static 'images/product3.jpg' %}" alt="">
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="inputBox">
+            <input type="text" required name="n">
+            <label>name</label>
+        </div>
+        <div class="inputBox">
+            <input type="email" required name="e">
+            <label>email</label>
+        </div>
+        <div class="inputBox">
+            <input type="number" required name="num">
+            <label>number</label>
+        </div>
+        <div class="inputBox">
+            <textarea required name="m"  cols="30" rows="10" ></textarea>
+            <label>message</label>
+        </div>
+
+        <input type="submit" value="send message" class="btn">
+
+    </form>
+
+</div>
+
+</section>
+{% endblock %}

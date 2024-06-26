@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoGreen </title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/styleg.css' %}">
+
+</head>
+<body>
+
+<!-- header section starts  -->
+
+<header>
+
+    <div class="header-1">
+
+        <div class="share">
+            <span> follow us : </span>
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+        </div>
+
+        <div class="call">
+            <span> call us : </span>
+            <a href="#">+123-456-7890</a>
+        </div>
+
+    </div>
+
+    <div class="header-2">
+
+        <a href="#" class="logo"> <i class="fas fa-seedling"></i>GO GREEN </a>
+
+        <form class="search-bar-container" method="POST" action="{% url 'search' %}">
+          {% csrf_token %}
+        <input class="form-control me-2" id="search-bar" type="search" placeholder="Search"  name="q" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+    </div>
+
+
+  {% if user.is_authenticated %}
+    <div class="header-3">
+
+        <div id="menu-bar" class="fas fa-bars"></div>
+
+        <nav class="navbar">
+            <a href="{% url 'home' %}">home</a>
+            <a href="{% url 'category' %}">category</a>
+            <a href="{% url 'blog' %}">Care Guide</a>
+            <a href="{% url 'deal' %}">deal</a>
+            <a href="{% url 'contact' %}">contact</a>
+        </nav>
+
+        <div class="navbar">
+            <a href="{% url 'view' %}" class="fas fa-shopping-cart"></a>
+            <a href="{% url 'orderview' %}">Your Orders</a>
+
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+
+    </div>
+    {% else %}
+
+    <div class="header-3">
+
+        <div id="menu-bar1" class="fas fa-bars"></div>
+
+        <nav class="navbar">
+            <a href="{% url 'home' %}">home</a>
+            <a href="{% url 'category' %}">category</a>
+            <a href="{% url 'blog' %}">care guide</a>
+            <a href="{% url 'deal' %}">deal</a>
+            <a href="{% url 'contact' %}">contact</a>
+        </nav>
+
+        <div class="icons">
+            <a href="{% url 'register' %}" class="fas fa-shopping-cart"></a>
+            <a href="{% url 'register' %}" class="fas fa-user-circle"></a>
+        </div>
+
+    </div>
+  {% endif %}
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+{% block content %}
+{% endblock %}
+<!-- footer section starts  -->
+
+<section class="footer ">
+
+    <div class="box-container ">
+
+        <div class="box ">
+            <h3>about us</h3>
+            <p>GoGreen is your premier destination for high-quality plants, fostering a community of passionate gardeners with expert advice, diverse plant selections, and a commitment to sustainable gardening practices.</p>
+        </div>
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="{% url 'home' %}">home</a>
+            <a href="{% url 'category' %}">category</a>
+            <a href="{% url 'blog' %}">care guide</a>
+            <a href="{% url 'deal' %}">deal</a>
+            <a href="{% url 'contact' %}">contact</a>
+        </div>
+
+        <div class="box">
+            <h3>Contact Us</h3>
+            <p>123 Green Street, Kerala, Zip Code-689611</p>
+            <p>Phone: +91-9061678768</p>
+            <p>Email:gogreen@gmail.com</p>
+
+        </div>
+
+
+    </div>
+
+
+        <h1 class="credit">&copy; 2024 GoGreen. All rights reserved.</h1>
+
+</section>
+
+<!-- footer section ends -->
+
+<!-- scroll top button  -->
+<a href="{% url 'home' %}" class="scroll-top fas fa-angle-up"></a>
+
+
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="{% static 'js/scriptps.js' %}"></script>
+
+</body>
+</html>

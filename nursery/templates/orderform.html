@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container">
+  <div class="title">
+      <h2>Product Order Form</h2>
+  </div>
+<div class="d-flex">
+  <form  method="POST">
+    {% csrf_token %}
+    <label>
+      <span class="fname">Full Name <span class="required">*</span></span>
+      <input type="text" name="n" placeholder="Enter the name">
+    </label>
+    <label>
+      <span>Address <span class="required">*</span></span>
+      <input type="text" name="a" placeholder="Enter the address" required>
+    </label>
+    <label>
+      <span>Phone <span class="required">*</span></span>
+      <input type="tel" name="p" placeholder="Enter the number">
+    </label>
+    <label>
+      <span>Account Number<span class="required">*</span></span>
+      <input type="number" name="ac" placeholder="Enter the account number">
+    </label>
+    <input type="submit" class="btn form-control" >
+  </form>
+</div>
+</div>
+{% endblock %}

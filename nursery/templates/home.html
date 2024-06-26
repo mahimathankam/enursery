@@ -1,0 +1,257 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="home" id="home">
+
+    <div class="swiper-container home-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <div class="box" style="background: url({% static 'images/slider1.jpg' %});">
+                    <div class="content">
+                        <span>upto 75% off</span>
+                        <h3>plant big sale special offer</h3>
+                        <a href="{% url 'category' %}" class="btn">shop now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box" style="background: url({% static 'images/slider2.jpg' %});">
+                    <div class="content">
+                        <span>upto 45% off</span>
+                        <h3>plant make people happy</h3>
+                        <a href="{% url 'category' %}" class="btn">shop now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box" style="background: url({% static 'images/slider3.jpg' %});">
+                    <div class="content">
+                        <span>upto 65% off</span>
+                        <h3>decorate your home now</h3>
+                        <a href="{% url 'category' %}" class="btn">shop now</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- banner section starts  -->
+
+<section class="banner-container">
+
+    <div class="banner">
+        <img src="{% static 'images/banner1.jpg' %}" alt="">
+        <div class="content">
+            <span>new arrivals</span>
+            <h3>house plants</h3>
+            <a href="{% url 'product' 'Plants For House' %}" class="btn">shop now</a>
+        </div>
+    </div>
+    <div class="banner">
+        <img src="{% static 'images/banner2.jpg' %}" alt="">
+        <div class="content">
+            <span>new arrivals</span>
+            <h3>office plants</h3>
+            <a href="{% url 'product' 'Plants For Office' %}" class="btn">shop now</a>
+        </div>
+    </div>
+
+</section>
+
+<!-- banner section ends -->
+
+<!-- category section starts  -->
+{% block category %}
+
+<section class="category" id="category">
+
+<h1 class="heading"> Shop by category </h1>
+
+<div class="box-container">
+    {% for i in cat %}
+    <div class="box">
+        <img src="{{i.image.url}}" alt="">
+        <div class="content">
+            <h3>{{i.name}}</h3>
+            <a href="{% url 'product' i.name %}" class="btn">Shop now</a>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+</section>
+
+{% endblock %}
+<!-- category section ends -->
+
+<!-- product section starts  -->
+
+
+<section class="deal" id="deal">
+
+<h1 class="heading">How To Use Plants In Interior Design </h1>
+
+<div class="row">
+
+        <div class="content">
+            <h3 class="title">Plant Care Guide</h3>
+            <div class="points">
+        <ul>
+            <li style="font-size:18px;color:black;">Ensure the plant receives adequate sunlight each day.</li>
+            <li style="font-size:18px;color:black;">Water the plant regularly, but avoid overwatering to prevent root rot.</li>
+            <li style="font-size:18px;color:black;">Use well-draining soil to promote healthy root growth.</li>
+            <li style="font-size:18px;color:black;">Fertilize the plant monthly during the growing season.</li>
+            <li style="font-size:18px;color:black;">Monitor for pests and diseases, and take appropriate action if detected.</li>
+            <li style="font-size:18px;color:black;">Prune the plant as needed to maintain its shape and encourage new growth.</li>
+            <li style="font-size:18px;color:black;">Rotate the plant occasionally to ensure even growth on all sides.</li>
+            <li style="font-size:18px;color:black;">Provide adequate humidity for plants that require it, especially during winter months.</li>
+            <li style="font-size:18px;color:black;">Avoid placing plants near drafts or heating vents to prevent stress.</li>
+            <li style="font-size:18px;color:black;">Repot the plant when it outgrows its current container or every 1-2 years.</li>
+            <li style="font-size:18px;color:black;">Research the specific care needs of your plant species for best results.</li>
+        </ul>
+    </div>
+            <a href="{% url 'blog' %}" class="btn">read more</a>
+        </div>
+
+        <div class="image">
+            <img src="{% static 'images/product1.jpg' %}" alt="">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- product section ends -->
+
+<!-- .icons section starts  -->
+
+<section class="icons-container">
+
+    <div class="icon">
+        <img src="{% static 'images/icon1.png' %}" alt="">
+        <div class="content">
+            <h3>free shipping</h3>
+            <p>Free shipping on order</p>
+        </div>
+    </div>
+    <div class="icon">
+        <img src="{% static 'images/icon2.png' %}" alt="">
+        <div class="content">
+            <h3>100% Money Back</h3>
+            <p>You’ve 30 days to Return</p>
+        </div>
+    </div>
+    <div class="icon">
+        <img src="{% static 'images/icon3.png' %}" alt="">
+        <div class="content">
+            <h3>Payment Secure</h3>
+            <p>100% secure payment</p>
+        </div>
+    </div>
+    <div class="icon">
+        <img src="{% static 'images/icon4.png' %}" alt="">
+        <div class="content">
+            <h3>Support 24/7</h3>
+            <p>Contact us anytime</p>
+        </div>
+    </div>
+
+</section>
+
+<!-- .icons section ends -->
+
+<!-- deal section starts  -->
+
+<section class="deal" >
+
+    <h1 class="heading"> deal of the day </h1>
+
+    <div class="row">
+
+        <div class="content">
+            <h3 class="title">don't miss the deal</h3>
+            <p>"Explore our exclusive plant deals today! Limited time offer. Don't miss out!"</p>
+            <div class="count-down">
+                <div class="box">
+                    <h3 id="day">00</h3>
+                    <span>day</span>
+                </div>
+                <div class="box">
+                    <h3 id="hour">00</h3>
+                    <span>hour</span>
+                </div>
+                <div class="box">
+                    <h3 id="minute">00</h3>
+                    <span>minute</span>
+                </div>
+                <div class="box">
+                    <h3 id="second">00</h3>
+                    <span>second</span>
+                </div>
+            </div>
+            <a href="{% url 'deal' %}" class="btn">check out deal</a>
+        </div>
+
+        <div class="image">
+            <img src="{% static 'images/deal-img.jpg' %}" alt="">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- deal section ends -->
+
+<!-- contact section starts  -->
+
+<section class="contact" id="contact">
+
+<h1 class="heading">get in touch</h1>
+
+<div class="row">
+
+    <img src="{% static 'images/product3.jpg' %}" alt="">
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="inputBox">
+            <input type="text" required name="n">
+            <label>name</label>
+        </div>
+        <div class="inputBox">
+            <input type="email" required name="e">
+            <label>email</label>
+        </div>
+        <div class="inputBox">
+            <input type="number" required name="num">
+            <label>number</label>
+        </div>
+        <div class="inputBox">
+            <textarea required name="m"  cols="30" rows="10" ></textarea>
+            <label>message</label>
+        </div>
+
+        <input type="submit" value="send message" class="btn">
+
+    </form>
+
+
+</div>
+
+</section>
+
+<!-- contact section ends -->
+{% endblock %}
